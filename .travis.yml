@@ -1,0 +1,23 @@
+sudo: required
+
+language: ruby
+
+services:
+- docker
+
+env:
+  global:
+  - COMMIT=${TRAVIS_COMMIT::8}
+  - REPO=dairyd/tomcat
+  - secure: HX3/noPrgCQn81zZJ6JlJpjnVcCPgl8W7CzV1nR1hU4f1HJDI2wckpuI1dej2vs70xawstgYfnCCMHDMPz21g+TLS5o5dKjbEGn/tVoceSTrNhEkmj0s++9Q0Y5zFXEc9zHFcz0+bO2TEQPDD3gK+kKdIAeSMvQL/1NxT/Yd84o8jFuvnlinQekckIKo/h17e8QHUMd9LLUxNerNvsqmGRW4fMfq8nqL+Gs+CLMSfyYDTDETAYzJzlliStzZ17Psieqnt5e97sbV04zPa5SA/g8ROAfPFK/CQnWz/4GnF1KBDTfoQ4OghTlkXquuzTDMeJbTRpFHW1HGBYAlS8Ldb363riZMeB/yJxhYw7tPSI2oeKi402Jjotf1zsdRiFFDQsVfOqWhzECEmT46xPVRWRjVNKHfTke9SMUISCYdCINagZ8UASIKy0fuB96EGiLV/DxOyyN8IyAwc4f5u1JmTkBI4q+depGAR20C4sBTdvejRIoJw+z2c6O6Qrnp7US4XfiDxUJWLkw8reLb7zGl7rH5gwHiBr5IGFIU3WgB8VKzizKDTu7BrJio9lszPbRThUYH8Jp6qT5c1g2nmR8GNTEo4vtAlVhLaQkGt4uE+ruWSkC7eubkdZAUCHkAX5Grx++YFRyqRLZn+KdEXbhyaqLx17nsZa22c1NaV9q5gUs=
+  - secure: F7iUFuUdTPH9mk091HsgLZ8SlOdQ/ouDgxLU+gLk9YqDu4/XDZKng/vUNAvf9zqx0Yu1Nj6+JlNio0+pQacN/JEMIVeT2lLSEDqzES9VBhs5Zq5uS8unlTiv+PzjuAn1necX2kj+TP1kzxA4VwgYczKpZn8gygIu2kxyJszCFaOctGH9drxWcBwaJQonl8PYKg3fpp5GEc2Tf0WiWQRDJi4YudTlwh8OMPChfcl1BvNfLO6123zezuX0cFT+jiBkPrgcJMMLYqJBjv3oPOb/YND49A7pD2gdSpY29EGSpU698B+8fb7WQyTgFkTU3u9i1FItfPHC6ElnHUyHtkvA25LS0LSyMIwbKUSoJBz0GhZmqq0XNF8e73IRkSKT1eJ+GUREV/CbPuua2Bxc+0uELm6nvLDPRqAe+QTEtnGzaFkJ4rCBwrB+wEd8bSLD49y2ipm4ZiMDJxe6dSIv+fRSQJbn566GX7Wzgd7f75gPu9s/XNYffqIHPxwy6Zymtq9fXWVFSXdJMZycEo2LYoSyCaOSGhrglIc15qm/pIsweMEQj3+GrAInSTdfkqcyySENexOoUOauf1SPzxflCpOJmmydPKBwgOu35dzm0yN/20JvrpLVYshtvJGOzG6F1zf0ks0nr+hB0zRWAHAXUAEofWZB3JYuKQzsAZH1ugUAk0Q=
+
+script:
+- export TAG=`if [[ $TRAVIS_PULL_REQUEST == "false" ]] && [[ $TRAVIS_BRANCH == "master"
+  ]]; then echo "8.5"; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi`
+- export REPO=dairyd/tomcat
+- docker build -t $REPO:$TAG -f Dockerfile .
+
+after_success:
+- docker login -u $DOCKER_USER -p $DOCKER_PASS
+- docker push $REPO:$TAG
