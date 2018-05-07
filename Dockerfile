@@ -53,8 +53,8 @@ RUN set -ex; \
 	done
 
 ENV TOMCAT_MAJOR 8
-ENV TOMCAT_VERSION 8.5.23
-ENV TOMCAT_SHA1 1ba27c1bb86ab9c8404e98068800f90bd662523c
+ENV TOMCAT_VERSION 8.5.31
+ENV TOMCAT_SHA512 a961eedc4b0c0729f1fb96dafb75eb48e000502233b849f47c84a6355873bc96d131b112400587e96391262e0659df9b991b4e66a78fda74168f939c4ab5af88
 
 ENV TOMCAT_TGZ_URLS \
 # https://issues.apache.org/jira/browse/INFRA-8753?focusedCommentId=14735394#comment-14735394
@@ -82,7 +82,7 @@ RUN set -eux; \
 	done; \
 	[ -n "$success" ]; \
 	\
-	echo "$TOMCAT_SHA1 *tomcat.tar.gz" | sha1sum -c -; \
+	echo "$TOMCAT_SHA512 *tomcat.tar.gz" | sha1sum -c -; \
 	\
 	success=; \
 	for url in $TOMCAT_ASC_URLS; do \
