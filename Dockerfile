@@ -82,7 +82,7 @@ RUN set -eux; \
 	done; \
 	[ -n "$success" ]; \
 	\
-	echo "$TOMCAT_SHA512 *tomcat.tar.gz" | sha1sum -c -; \
+	echo "$TOMCAT_SHA512 *tomcat.tar.gz" | sha512sum -c -; \
 	\
 	success=; \
 	for url in $TOMCAT_ASC_URLS; do \
