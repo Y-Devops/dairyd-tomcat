@@ -38,7 +38,7 @@ RUN set -ex; \
 			echo 'Pin-Priority: 990'; \
 		} > /etc/apt/preferences.d/stretch-openssl; \
 	fi
-RUN apt-get update && apt-cache search openssl && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-cache madison openssl && apt-get install -y --no-install-recommends \
 		libapr1 \
 		openssl="$OPENSSL_VERSION" \
 	&& rm -rf /var/lib/apt/lists/*
