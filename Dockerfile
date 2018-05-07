@@ -40,7 +40,7 @@ RUN set -ex; \
 	fi
 RUN apt-get update && apt-cache madison openssl && apt-get install -y --no-install-recommends \
 		libapr1 \
-		openssl="$OPENSSL_VERSION" \
+		openssl \
 	&& rm -rf /var/lib/apt/lists/*
 
 # see https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/KEYS
