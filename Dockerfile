@@ -109,6 +109,7 @@ RUN set -eux; \
 		openjdk-8-jdk \
 		#openjdk-${JAVA_VERSION%%[-~bu]*}-jdk=$JAVA_DEBIAN_VERSION \
 	"; \
+	groupadd messagebus; \
 	apt-get update; \
 	apt-get install -y --no-install-recommends $nativeBuildDeps; \
 	rm -rf /var/lib/apt/lists/*; \
