@@ -121,7 +121,8 @@ RUN set -eux; \
 		libapr1-dev \
 		libssl-dev \
 		make \
-		"openjdk-${JAVA_VERSION%%[.~bu-]*}-jdk=$JAVA_DEBIAN_VERSION" \
+		openjdk-${JAVA_VERSION%%[.~bu-]*}-jdk \
+		#"openjdk-${JAVA_VERSION%%[.~bu-]*}-jdk=$JAVA_DEBIAN_VERSION" \
 	; \
 	( \
 		export CATALINA_HOME="$PWD"; \
