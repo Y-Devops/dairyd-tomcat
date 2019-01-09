@@ -45,7 +45,7 @@ RUN set -ex; \
 		rm -rf /var/lib/apt/lists/*; \
 	fi
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN groupadd messagebus && apt-get update && apt-get install -y --no-install-recommends \
 		libapr1 \
 	&& rm -rf /var/lib/apt/lists/*
 
