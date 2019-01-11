@@ -1,5 +1,7 @@
 FROM dairyd/openjdk:8-jre
 
+LABEL maintainer="24.7@yungasdevops.com"
+
 ENV REFRESHED_AT 2019-01-08
 
 ENV CATALINA_HOME /usr/local/tomcat
