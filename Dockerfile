@@ -2,7 +2,7 @@ FROM dairyd/openjdk:8-jre
 
 LABEL maintainer="24.7@yungasdevops.com"
 
-ENV REFRESHED_AT 2019-06-01
+ENV REFRESHED_AT 2019-07-01
 
 ENV CATALINA_HOME /usr/local/tomcat
 ENV PATH $CATALINA_HOME/bin:$PATH
