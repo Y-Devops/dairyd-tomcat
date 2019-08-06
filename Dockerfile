@@ -1,4 +1,4 @@
-FROM dairyd/openjdk:8-jre
+FROM dairyd/openjdk:8-jdk
 
 LABEL maintainer="7of9@ydevops.com"
 
