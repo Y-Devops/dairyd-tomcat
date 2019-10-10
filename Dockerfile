@@ -2,7 +2,7 @@ FROM dairyd/openjdk:8-jdk
 
 LABEL maintainer="7of9@ydevops.com"
 
-ENV REFRESHED_AT 2019-08-05
+ENV REFRESHED_AT 2019-10-10
 ENV DEBIAN_FRONTEND noninteractive
 ENV CATALINA_HOME /usr/local/tomcat
 ENV PATH $CATALINA_HOME/bin:$PATH
